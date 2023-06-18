@@ -1,3 +1,4 @@
+import Botao from '../Botao'
 import CampoTexto from '../CampoTexto/CampoTexto'
 import ListaSuspensa from '../ListaSuspensa'
 import './Formulario.css'
@@ -10,13 +11,23 @@ const Formulario = () => {
         'Adc',
         'Suporte'
     ]
+
+    const isRequired = true;
+
+    const aoSalvar= (evento)=>{
+        evento.preventDefault()
+        console.log('formulario enviado')
+    }
     return (
         <section className='formulario'>
-            <form>
+            <form onSubmit={aoSalvar}>
                 <h2>Preencha os dados para criar o card do Player.</h2>
-                <CampoTexto label="Nome" placeholder="Digite o seu nome" />
-                <ListaSuspensa label="Função" itens= {times}/>
+                <CampoTexto obrigatorio={isRequired} label="Nome" placeholder="Digite o seu nome" />
+                <ListaSuspensa obrigatorio={isRequired} label="Função" itens= {times}/>
                 <CampoTexto label="Imagem" placeholder="Digite o endereço da imagem" />
+                <Botao>
+                    Criar Card
+                </Botao>
             </form>
         </section>
     )
