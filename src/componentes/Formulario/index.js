@@ -5,6 +5,7 @@ import ListaSuspensa from '../ListaSuspensa'
 import './Formulario.css'
 
 const Formulario = (props) => {
+    
     const times = [
         'Top',
         'Mid',
@@ -12,6 +13,7 @@ const Formulario = (props) => {
         'Adc',
         'Suporte'
     ]
+    
     const [nome, setNome]= useState('')
     const [imagem, setImagem]= useState('')
     const [time, setTime]= useState('')
