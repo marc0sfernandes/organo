@@ -4,7 +4,7 @@ import CampoTexto from '../CampoTexto/CampoTexto'
 import ListaSuspensa from '../ListaSuspensa'
 import './Formulario.css'
 
-const Formulario = () => {
+const Formulario = (props) => {
     const times = [
         'Top',
         'Mid',
@@ -20,7 +20,10 @@ const Formulario = () => {
 
     const aoSalvar= (evento)=>{
         evento.preventDefault()
-        console.log('formulario enviado =>',nome,imagem,time)
+        props.aoPlayerCadastrado(
+            [
+            nome,time,imagem
+        ])
     }
     return (
         <section className='formulario'>
