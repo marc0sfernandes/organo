@@ -3,7 +3,7 @@ import './Colaborador.css';
 
 const Colaborador = ({ nome, imagem, cargo, corDeFundo, aoDeletar }) => {
     return (<div className='colaborador'>
-        <AiFillCloseSquare size={25} className='deletar' onClick={aoDeletar}></AiFillCloseSquare>
+        <AiFillCloseSquare size={25} className='deletar' onClick={() => aoDeletar(nome)}/>
         <div className='cabecalho' style={{backgroundColor: corDeFundo}}>
             <img src={imagem} alt={nome}/>
         </div>
