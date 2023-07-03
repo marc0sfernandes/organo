@@ -9,23 +9,23 @@ function App() {
   const [times, setTimes] = useState([
     {
       nome: 'Top',
-      cor: '#D9F7E9'
+      cor: '#57C278'
     },
     {
       nome: 'Mid',
-      cor: '#E8F8FF'
+      cor: '#82CFFA'
     },
     {
       nome: 'Jungle',
-      cor: '#F0F8E2'
+      cor: '#A6D157'
     },
     {
       nome: 'Adc',
-      cor: '#FDE7E8'
+      cor: '#E06B69'
     },
     {
       nome: 'Support',
-      cor: '#FAE9F5'
+      cor: '#DB6EBF'
     }
 
   ])
@@ -59,6 +59,7 @@ function App() {
         time={time} 
         colaboradores={colaboradores.filter(colaborador => colaborador.time === time.nome)}
         aoDeletar={deletarColaborador}
+        key={time.nome}
       />)}   
       <Rodape/>
     </div>
