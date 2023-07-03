@@ -6,38 +6,47 @@ import Time from './componentes/Time';
 
 function App() {
 
-  const times = [
+  const [times, setTimes] = useState([
     {
       nome: 'Top',
-      corPrimaria: '#57C278',
-      corSecundaria: '#D9F7E9'
+      cor: '#D9F7E9'
     },
     {
       nome: 'Mid',
-      corPrimaria: '#82CFFA',
-      corSecundaria: '#E8F8FF'
+      cor: '#E8F8FF'
     },
     {
       nome: 'Jungle',
-      corPrimaria: '#A6D157',
-      corSecundaria: '#F0F8E2'
+      cor: '#F0F8E2'
     },
     {
       nome: 'Adc',
-      corPrimaria: '#E06B69',
-      corSecundaria: '#FDE7E8'
+      cor: '#FDE7E8'
     },
     {
       nome: 'Support',
-      corPrimaria: '#DB6EBF',
-      corSecundaria: '#FAE9F5'
+      cor: '#FAE9F5'
     }
-  ]
+
+  ])
 
   const [colaboradores, setColaboradores] = useState([])
 
   const aoNovoColaboradorAdicionado = (colaborador) => {
     setColaboradores([...colaboradores, colaborador])
+  }
+
+  function deletarColaborador(){
+    console.log('deletando colaborador')
+  } 
+
+  function mudarCorDoTime(cor, nome){
+    setTimes(times.map(time =>{
+      if(time.nome === nome){
+        time.cor = cor;
+      }
+      return time
+    }))
   }
 
   return (
@@ -46,11 +55,10 @@ function App() {
       <Formulario times={times.map(time => time.nome)} aoColaboradorCadastrado={colaborador => aoNovoColaboradorAdicionado(colaborador)}/>
 
       {times.map(time => <Time 
-        key={time.nome} 
-        nome={time.nome} 
-        corPrimaria={time.corPrimaria} 
-        corSecundaria={time.corSecundaria} 
+        mudarCor={mudarCorDoTime}
+        time={time} 
         colaboradores={colaboradores.filter(colaborador => colaborador.time === time.nome)}
+        aoDeletar={deletarColaborador}
       />)}   
       <Rodape/>
     </div>
