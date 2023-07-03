@@ -42,8 +42,8 @@ function App() {
     setColaboradores([...colaboradores, colaborador])
   }
 
-  function deletarColaborador(nome){
-    setColaboradores(colaboradores.filter(colaborador => colaborador.nome !== nome))
+  function deletarColaborador(nome,time){
+    setColaboradores(colaboradores.filter(colaborador => (colaborador.nome !== nome && colaborador.time === time) || (colaborador.nome === nome && colaborador.time !== time )))
   } 
 
   function mudarCorDoTime(cor, id){
