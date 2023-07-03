@@ -40,10 +40,11 @@ function App() {
 
   const aoNovoColaboradorAdicionado = (colaborador) => {
     setColaboradores([...colaboradores, colaborador])
+    console.log(colaboradores)
   }
 
-  function deletarColaborador(nome,time){
-    setColaboradores(colaboradores.filter(colaborador => (colaborador.nome !== nome && colaborador.time === time) || (colaborador.nome === nome && colaborador.time !== time )))
+  function deletarColaborador(id){
+    setColaboradores(colaboradores.filter(colaborador => colaborador.id !== id ))
   } 
 
   function mudarCorDoTime(cor, id){
@@ -55,12 +56,21 @@ function App() {
     }))
   }
 
+  function resolverFavorito(id){
+    setColaboradores(colaboradores.map(colaborador=> {
+      if(colaborador.id === id) colaborador.favorito = !colaborador.favorito
+      return colaborador
+    }))
+  }
+
   return (
     <div className="App">
       <Banner />
-      <Formulario times={times.map(time => time.nome)} aoColaboradorCadastrado={colaborador => aoNovoColaboradorAdicionado(colaborador)}/>
+      <Formulario 
+      times={times.map(time => time.nome)} aoColaboradorCadastrado={colaborador => aoNovoColaboradorAdicionado(colaborador)}/>
 
-      {times.map(time => <Time 
+      {times.map(time => <Time
+        aoFavoritar={resolverFavorito}
         mudarCor={mudarCorDoTime}
         time={time} 
         colaboradores={colaboradores.filter(colaborador => colaborador.time === time.nome)}
